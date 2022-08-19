@@ -11,6 +11,7 @@ import { memo, useCallback, useEffect, VFC } from "react";
 import { UserCard } from "../organisms/user/UserCard";
 import { useAllUsers } from "../../hooks/useAllUsers";
 import { useSelectUser } from "../../hooks/useSelectUser";
+import { useLoginUser } from "../../hooks/useLoginUser";
 
 import { UserDetailModal } from "../organisms/user/UserDetailModal";
 
@@ -18,6 +19,8 @@ export const UserManagement: VFC = memo(() => {
   const { getUsers, users, loading } = useAllUsers();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { onSelectUser, selectedUser } = useSelectUser();
+  const { loginUser } = useLoginUser();
+  console.log(loginUser);
 
   //初回だけデータ取得するためuseEffect
   useEffect(() => getUsers(), []);
